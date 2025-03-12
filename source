@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUCTURNING - Centro de monitoreo</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <h1>LUCTURNING</h1>
+            <p>Centro de monitoreo y Control de usuario</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="cargarContenido('proyectos')">Proyectos</a></li>
+                <li><a href="#" onclick="cargarContenido('publicaciones')">Publicaciones</a></li>
+                <li><a href="#" onclick="cargarContenido('datos')">Datos</a></li>
+                <li><a href="#" onclick="cargarContenido('acerca')">Acerca de</a></li>
+            </ul>
+            <input type="text" placeholder="Buscar">
+        </nav>
+    </header>
+    
+    <section id="contenido" class="contenido oculto"></section>
+    
+    <main>
+        <section class="control">
+            <h2>Control de Usuarios</h2>
+            <p>Supervisamos en tiempo real la actividad de tu sitio web para detectar y bloquear amenazas antes de que causen daño...</p>
+            <button class="ver-mas" onclick="toggleInfo('control-info')">Ver más</button>
+            <p id="control-info" class="oculto">Supervisamos en tiempo real la actividad de tu sitio web para detectar y bloquear amenazas antes de que causen daño. Con tecnología avanzada de análisis de tráfico y detección de intrusos, mantenemos tu información segura 24/7..</p>
+        </section>
+        
+        <section class="monitoreo">
+            <h2>Monitoreo de Datos</h2>
+            <p>Protege el acceso a tu plataforma con gestión avanzada de permisos y herramientas de seguridad de última generación...</p>
+            <button class="ver-mas" onclick="toggleInfo('monitoreo-info')">Ver más</button>
+            <p id="monitoreo-info" class="oculto">Protege el acceso a tu plataforma con  gestión avanzada de permisos y herramientas de seguridad de última generación. Nos aseguramos de que solo las personas autorizadas tengan acceso a la información crítica..</p>
+        </section>
+        
+        <section class="respaldo">
+            <h2>Respaldo en la Nube</h2>
+            <p>Evita pérdidas de datos y mantén tu negocio seguro operativo con nuestro servicio de copias de respaldo en la nube...</p>
+            <button class="ver-mas" onclick="toggleInfo('respaldo-info')">Ver más</button>
+            <p id="respaldo-info" class="oculto">Evita pérdidas de datos y mantén tu negocio siempre operativo con nuestro servicio de copias de seguridad en la nube. Implementamos cifrado de datos y almacenamiento seguro para garantizar que siempre puedas recuperar tu información en caso de cualquier imprevisto..</p>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="contacto">
+            <p>¿Necesitas ayuda?</p>
+            <button>Contáctanos</button>
+        </div>
+        <div class="info">
+            <p>&copy; 2024 Universidad Simón Bolívar Colombia</p>
+        </div>
+    </footer>
+
+    <script>
+        function cargarContenido(seccion) {
+            let contenido = document.getElementById("contenido");
+            let secciones = {
+                "proyectos": "<h2>Proyectos</h2><p>Aquí encontrarás información sobre nuestros proyectos de monitoreo y control de usuarios, enfocados en mejorar la seguridad y eficiencia.</p>",
+                "publicaciones": "<h2>Publicaciones</h2><p>Explora nuestras publicaciones y artículos sobre tendencias en seguridad digital, almacenamiento en la nube y análisis de datos.</p>",
+                "datos": "<h2>Datos</h2><p>Accede a estadísticas, reportes e información clave sobre el monitoreo de datos en tiempo real.</p>",
+                "acerca": "<h2>Acerca de</h2><p>Somos un equipo dedicado a la seguridad informática y gestión de información en entornos digitales.</p>"
+            };
+            
+            contenido.innerHTML = secciones[seccion];
+            contenido.classList.remove("visible");
+            void contenido.offsetWidth;
+            contenido.classList.add("visible");
+            contenido.classList.remove("oculto");
+        }
+
+        function toggleInfo(id) {
+            let info = document.getElementById(id);
+            if (info.classList.contains("oculto")) {
+                info.classList.remove("oculto");
+                info.classList.add("visible");
+            } else {
+                info.classList.remove("visible");
+                info.classList.add("oculto");
+            }
+        }
+    </script>
+
+    <style>
+        .oculto {
+            display: none;
+        }
+        .visible {
+            display: block;
+            animation: slideDown 0.5s ease-in-out;
+            background-color: #007BFF;
+            color: white;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .ver-mas {
+            background-color: #007BFF;
+            color: rgb(255, 255, 255);
+            border: none;
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</body>
+</html>
